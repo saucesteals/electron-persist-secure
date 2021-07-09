@@ -1,9 +1,9 @@
-import { MessageReply, StoreBindingsOptions } from "../types";
+import { MessageReply } from "../types";
 import { ipcRenderer } from "electron";
 import { createMessageHelper } from "./messaging";
 
-export const createStoreBindings = (options: StoreBindingsOptions): Record<string, Function> => {
-  const messageHelper = createMessageHelper(options.storeName);
+export const createStoreBindings = (storeName: string = "config"): Record<string, Function> => {
+  const messageHelper = createMessageHelper(storeName);
   return {
     getItem: async (key: string): Promise<boolean> => {
       const result: MessageReply = await ipcRenderer.invoke(messageHelper.GET, key);

@@ -1,7 +1,3 @@
-export interface StoreBindingsOptions {
-  storeName: string;
-}
-
 export interface MessageReply {
   success: boolean;
   error?: string;
