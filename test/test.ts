@@ -1,3 +1,3 @@
-import ElectronStorage from "../src";
+import Store from "../src/Store";
 
-console.log(typeof ElectronStorage.Store);
+console.log(Store);
