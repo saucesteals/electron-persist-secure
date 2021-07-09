@@ -1,3 +1,3 @@
-import Store from "../src/Store";
+import Store from "../lib/store";
 
 console.log(Store);

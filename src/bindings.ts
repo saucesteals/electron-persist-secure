@@ -1,6 +1,6 @@
-import { MessageReply } from "../types";
+import { MessageReply } from "./types";
 import { ipcRenderer } from "electron";
-import { createMessageHelper } from "./messaging";
+import { createMessageHelper } from "./utils/messaging";
 
 export const createStoreBindings = (storeName: string = "config") => {
   const messageHelper = createMessageHelper(storeName);
