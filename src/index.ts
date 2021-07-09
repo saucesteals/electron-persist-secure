@@ -1,5 +1,3 @@
 import { createStoreBindings } from "./utils/bindings";
 
-export default {
-  createStoreBindings,
-};
+export { createStoreBindings };
