@@ -37,6 +37,8 @@ export default class Store extends Conf {
     ipcMain.handle(this.messageHelper.DELETE, wrapMessageHandler(this.handleDelete));
 
     ipcMain.handle(this.messageHelper.DESTORY_STORE, wrapMessageHandler(this.handleDestoryStore));
+
+    this.listening = true;
   }
 
   private async handleGet(event: IpcMainInvokeEvent, key: string): Promise<MessageReply> {
