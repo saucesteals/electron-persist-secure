@@ -5,7 +5,7 @@ import { createMessageHelper } from "./messaging";
 export const createStoreBindings = (storeName: string = "config") => {
   const messageHelper = createMessageHelper(storeName);
   return {
-    getItem: async (key: string): Promise<boolean> => {
+    getItem: async (key: string): Promise<any> => {
       const result: MessageReply = await ipcRenderer.invoke(messageHelper.GET, key);
       if (result.success) {
         return result.value;
@@ -16,7 +16,7 @@ export const createStoreBindings = (storeName: string = "config") => {
     setItem: async (key: string, value: any): Promise<boolean> => {
       const result: MessageReply = await ipcRenderer.invoke(messageHelper.SET, key, value);
       if (result.success) {
-        return result.value;
+        return true;
       } else {
         throw new Error(result.error);
       }
