@@ -2,7 +2,7 @@ import { MessageReply } from "../types";
 import { ipcRenderer } from "electron";
 import { createMessageHelper } from "./messaging";
 
-export const createStoreBindings = (storeName: string = "config"): Record<string, Function> => {
+export const createStoreBindings = (storeName: string = "config") => {
   const messageHelper = createMessageHelper(storeName);
   return {
     getItem: async (key: string): Promise<boolean> => {
