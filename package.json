@@ -2,7 +2,7 @@
   "name": "electron-persist-secure",
   "version": "1.0.0",
   "description": "Optimized storage for electron with use of a secure contextBridge",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "repository": "https://github.com/saucesteals/electron-persist-secure",
   "author": "daniel <saucesteals@gmail.com>",
   "license": "MIT",
@@ -17,9 +17,11 @@
     "clear": "rimraf dist",
     "build": "yarn clear && tsc",
     "start": "yarn build && node ./dist/index.js",
-    "test": "ts-node ./test/test.ts"
+    "test": "ts-node ./test/test.ts",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "conf": "^10.0.1"
+    "conf": "^10.0.1",
+    "husky": "^7.0.1"
   }
 }
