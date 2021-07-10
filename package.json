@@ -19,7 +19,8 @@
     "build": "yarn clear && tsc",
     "test": "ts-node ./test/test.ts",
     "prepare": "husky install",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "conf": "^10.0.1"
