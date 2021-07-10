@@ -1,1 +1,11 @@
-export declare const createStoreBindings: (storeName?: string) => void;
+export declare const createStoreBindings: (storeName?: string) => {
+    get: (key: string, defaultValue?: any) => Promise<any>;
+    set: (key: string | object, value?: any) => Promise<any>;
+    has: (key: string) => Promise<boolean>;
+    reset: (...keys: string[]) => Promise<any>;
+    delete: (key: string) => Promise<any>;
+    clear: () => Promise<void>;
+    getPath: () => Promise<string>;
+    getStore: () => Promise<any>;
+    getSize: () => Promise<number>;
+};
