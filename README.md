@@ -1,8 +1,9 @@
 # electron-persist-secure
-Optimized persistant storage for electron with use of a secure contextBridge.
+### Optimized persistant storage for electron with use of a secure contextBridge.
 
-## **Works with redux-persist out of the box!**
+### - **Works with redux-persist out of the box!**
 
+### -  **Made for our [electron-typescript-react-tailwind-redux](https://github.com/saucesteals/electron-typescript-react-tailwind-redux) boilerplate**
 
 # **Guide**
 
@@ -18,7 +19,6 @@ new BrowserWindow({
     })
 
 new Store({
-    cwd: app.getPath('userData')
     projectName: string = 'config' // This is your stores name
 });
 
