@@ -16,7 +16,7 @@
   },
   "scripts": {
     "clear": "rimraf lib",
-    "build": "npm clear && tsc",
+    "build": "yarn clear && tsc",
     "test": "ts-node ./test/test.ts",
     "prepare": "husky install && yarn build"
   },
