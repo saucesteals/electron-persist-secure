@@ -1,41 +1,42 @@
-import { MessageReply } from "./types";
+import { ConfigOperation } from "./types";
 import { ipcRenderer } from "electron";
-import { createMessageHelper } from "./utils/messaging";
+import { createStoreMessage } from "./utils";
 
 export const createStoreBindings = (storeName: string = "config") => {
-  const messageHelper = createMessageHelper(storeName);
+  const storeMessage = createStoreMessage(storeName);
+
+  const getReply = async (operation: ConfigOperation, ...args: any[]) => {
+    const reply = await ipcRenderer.invoke(storeMessage, operation, ...args);
+    if (reply.success) {
+      return reply.value;
+    } else {
+      throw new Error(reply.error);
+    }
+  };
+
   return {
-    getItem: async (key: string): Promise<any> => {
-      const result: MessageReply = await ipcRenderer.invoke(messageHelper.GET, key);
-      if (result.success) {
-        return result.value;
-      } else {
-        throw new Error(result.error);
-      }
+    get: async (key: string, defaultValue?: any): Promise<any> => {
+      return getReply("get", key, defaultValue);
     },
-    setItem: async (key: string, value: any): Promise<boolean> => {
-      const result: MessageReply = await ipcRenderer.invoke(messageHelper.SET, key, value);
-      if (result.success) {
-        return true;
-      } else {
-        throw new Error(result.error);
-      }
+
+    set: async (key: string | object, value?: any): Promise<any> => {
+      return getReply("set", key, value);
     },
-    removeItem: async (key: string): Promise<boolean> => {
-      const result: MessageReply = await ipcRenderer.invoke(messageHelper.DELETE, key);
-      if (result.success) {
-        return true;
-      } else {
-        throw new Error(result.error);
-      }
+
+    has: async (key: string): Promise<boolean> => {
+      return getReply("has", key);
     },
-    destoryStore: async (): Promise<boolean> => {
-      const result: MessageReply = await ipcRenderer.invoke(messageHelper.DESTORY_STORE);
-      if (result.success) {
-        return true;
-      } else {
-        throw new Error(result.error);
-      }
+
+    reset: async (...keys: string[]): Promise<any> => {
+      return getReply("reset", ...keys);
+    },
+
+    delete: async (key: string): Promise<any> => {
+      return getReply("delete", key);
+    },
+
+    clear: async (): Promise<any> => {
+      return getReply("clear");
     },
   };
 };
