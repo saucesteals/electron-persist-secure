@@ -30,13 +30,16 @@ export default class Store extends Conf {
       throw new Error(`Listeners for store have already been setup`);
     }
 
-    ipcMain.handle(this.messageHelper.GET, wrapMessageHandler(this.handleGet));
+    ipcMain.handle(this.messageHelper.GET, wrapMessageHandler(this.handleGet).bind(this));
 
-    ipcMain.handle(this.messageHelper.SET, wrapMessageHandler(this.handleSet));
+    ipcMain.handle(this.messageHelper.SET, wrapMessageHandler(this.handleSet).bind(this));
 
-    ipcMain.handle(this.messageHelper.DELETE, wrapMessageHandler(this.handleDelete));
+    ipcMain.handle(this.messageHelper.DELETE, wrapMessageHandler(this.handleDelete).bind(this));
 
-    ipcMain.handle(this.messageHelper.DESTORY_STORE, wrapMessageHandler(this.handleDestoryStore));
+    ipcMain.handle(
+      this.messageHelper.DESTORY_STORE,
+      wrapMessageHandler(this.handleDestoryStore).bind(this)
+    );
 
     this.listening = true;
   }
