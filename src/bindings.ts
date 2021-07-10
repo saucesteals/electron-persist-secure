@@ -14,7 +14,7 @@ export const createStoreBindings = (storeName: string = "config") => {
     }
   };
 
-  const bindings = {
+  return {
     get: async (key: string, defaultValue?: any): Promise<any> => {
       return getReply("get", key, defaultValue);
     },
