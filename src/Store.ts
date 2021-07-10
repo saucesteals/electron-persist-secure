@@ -30,15 +30,15 @@ export default class Store extends Conf {
       throw new Error(`Listeners for store have already been setup`);
     }
 
-    ipcMain.handle(this.messageHelper.GET, wrapMessageHandler(this.handleGet).bind(this));
+    ipcMain.handle(this.messageHelper.GET, wrapMessageHandler(this.handleGet.bind(this)));
 
-    ipcMain.handle(this.messageHelper.SET, wrapMessageHandler(this.handleSet).bind(this));
+    ipcMain.handle(this.messageHelper.SET, wrapMessageHandler(this.handleSet.bind(this)));
 
-    ipcMain.handle(this.messageHelper.DELETE, wrapMessageHandler(this.handleDelete).bind(this));
+    ipcMain.handle(this.messageHelper.DELETE, wrapMessageHandler(this.handleDelete.bind(this)));
 
     ipcMain.handle(
       this.messageHelper.DESTORY_STORE,
-      wrapMessageHandler(this.handleDestoryStore).bind(this)
+      wrapMessageHandler(this.handleDestoryStore.bind(this))
     );
 
     this.listening = true;
@@ -53,6 +53,7 @@ export default class Store extends Conf {
     key: string,
     value: any
   ): Promise<MessageReply> {
+    console.log(this);
     this.set("key", value);
     return { success: true, key: key };
   }
