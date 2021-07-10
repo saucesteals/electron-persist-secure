@@ -53,7 +53,7 @@ export default class Store extends Conf {
     key: string,
     value: any
   ): Promise<MessageReply> {
-    this.set("key", value);
+    this.set(key, value);
     return { success: true, key: key };
   }
 
