@@ -38,7 +38,7 @@ const createWindow = (): void => {
 
 app.on("ready", createWindow);
 
-createStores()
+createStores() // Make sure this is called only ONCE
 ```
 *For a more detailed guide on the options above, visit the [conf](https://www.npmjs.com/package/conf) package*
 
