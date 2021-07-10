@@ -14,7 +14,7 @@ export const createStoreBindings = (storeName: string = "config") => {
     }
   };
 
-  return {
+  const bindings = {
     get: async (key: string, defaultValue?: any): Promise<any> => {
       return getReply("get", key, defaultValue);
     },
@@ -39,16 +39,17 @@ export const createStoreBindings = (storeName: string = "config") => {
       return getReply("clear");
     },
 
-    path: async (): Promise<string> => {
+    getPath: async (): Promise<string> => {
       return getReply("path");
     },
 
-    store: async (): Promise<any> => {
+    getStore: async (): Promise<any> => {
       return getReply("store");
     },
 
-    size: async (): Promise<number> => {
+    getSize:  (): Promise<number> => {
       return getReply("size");
     },
   };
 };
+
