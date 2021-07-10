@@ -4,4 +4,13 @@ export interface MessageReply {
   value?: any;
 }
 
-export type ConfigOperation = "get" | "set" | "has" | "reset" | "delete" | "clear";
+export type ConfigOperation =
+  | "get"
+  | "set"
+  | "has"
+  | "reset"
+  | "delete"
+  | "clear"
+  | "path"
+  | "store"
+  | "size";

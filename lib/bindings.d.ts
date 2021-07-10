@@ -4,5 +4,8 @@ export declare const createStoreBindings: (storeName?: string) => {
     has: (key: string) => Promise<boolean>;
     reset: (...keys: string[]) => Promise<any>;
     delete: (key: string) => Promise<any>;
-    clear: () => Promise<any>;
+    clear: () => Promise<void>;
+    path: () => Promise<string>;
+    store: () => Promise<any>;
+    size: () => Promise<number>;
 };

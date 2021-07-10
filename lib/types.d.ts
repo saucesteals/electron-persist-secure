@@ -3,4 +3,4 @@ export interface MessageReply {
     error?: string;
     value?: any;
 }
-export declare type ConfigOperation = "get" | "set" | "has" | "reset" | "delete" | "clear";
+export declare type ConfigOperation = "get" | "set" | "has" | "reset" | "delete" | "clear" | "path" | "store" | "size";

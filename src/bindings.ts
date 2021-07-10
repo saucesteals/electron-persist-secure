@@ -35,8 +35,20 @@ export const createStoreBindings = (storeName: string = "config") => {
       return getReply("delete", key);
     },
 
-    clear: async (): Promise<any> => {
+    clear: async (): Promise<void> => {
       return getReply("clear");
+    },
+
+    path: async (): Promise<string> => {
+      return getReply("path");
+    },
+
+    store: async (): Promise<any> => {
+      return getReply("store");
+    },
+
+    size: async (): Promise<number> => {
+      return getReply("size");
     },
   };
 };

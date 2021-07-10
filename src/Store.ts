@@ -39,8 +39,16 @@ export default class Store extends Conf {
     operation: ConfigOperation,
     ...args: any[]
   ): MessageReply {
+    var value: any = undefined;
+
     try {
-      const value = (this[operation] as any)(...args);
+      const f = this[operation] as any;
+      if (typeof f === "function") {
+        value = (this[operation] as any)(...args);
+      } else {
+        value = f;
+      }
+
       return { success: true, value };
     } catch (err) {
       return { success: false, error: err.message };
