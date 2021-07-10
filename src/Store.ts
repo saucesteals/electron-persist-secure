@@ -44,7 +44,7 @@ export default class Store extends Conf {
     try {
       const f = this[operation] as any;
       if (typeof f === "function") {
-        value = (this[operation] as any)(...args);
+        value = f(...args);
       } else {
         value = f;
       }
