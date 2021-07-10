@@ -1,6 +1,6 @@
 {
   "name": "electron-persist-secure",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Optimized storage for electron with use of a secure contextBridge",
   "repository": "https://github.com/saucesteals/electron-persist-secure",
   "author": "daniel <saucesteals@gmail.com>",

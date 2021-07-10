@@ -10,20 +10,35 @@
 1. **Create the store in your main process:**
 ```ts
 
-new BrowserWindow({
-    width: 800,
-    height: 600,
+const createStores = (): void => {;
+
+  new Store({
+    projectName: string = "config" // The stores name. Default: "config"
+  });
+
+}
+
+const createWindow = (): void => {
+
+  // Create the browser window.
+  const mainWindow = new BrowserWindow({
+    height: 720,
+    width: 1280,
     webPreferences: {
       contextIsolation: true,
-      preload: 'your-preload.file'
-    })
+      nodeIntegration: false,
+      preload: "your.preload.file",
+    },
+  });
 
-new Store({
-    projectName: string = 'config' // This is your stores name
-});
+  // and load the index.html of the app.
+  mainWindow.loadURL("index.html");
 
+};
 
+app.on("ready", createWindow);
 
+createStores()
 ```
 *For a more detailed guide on the options above, visit the [conf](https://www.npmjs.com/package/conf) package*
 
