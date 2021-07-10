@@ -13,7 +13,7 @@
 const createStores = (): void => {;
 
   new Store({
-    projectName: string = "config" // The stores name. Default: "config"
+    configName: string = "config" // The stores name. Default: "config"
   });
 
 }
