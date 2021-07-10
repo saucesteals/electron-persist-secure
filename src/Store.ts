@@ -19,7 +19,7 @@ export default class Store extends Conf {
       projectVersion: options.projectVersion ?? app.getVersion(),
     });
 
-    this.storeName = options.projectName ?? "config";
+    this.storeName = options.configName ?? "config";
 
     this.setupListeners();
   }
