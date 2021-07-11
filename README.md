@@ -5,7 +5,8 @@
 
 ### -  **Made for our [electron-typescript-react-tailwind-redux](https://github.com/saucesteals/electron-typescript-react-tailwind-redux) boilerplate**
 
-# **Guide**
+---
+## **Guide**
 
 1. **Create the store in your main process:**
 ```ts
@@ -40,10 +41,9 @@ app.on("ready", createWindow);
 
 createStores() // Make sure this is called only ONCE
 ```
-*For a more detailed guide on the options above, visit the [conf](https://www.npmjs.com/package/conf) package*
 
 
-2. **Create bindings in your preload:**
+1. **Create bindings in your preload:**
 ```ts
 import { createStoreBindings } from 'electron-persist-secure/lib/bindings';
 
@@ -64,7 +64,17 @@ window.store.has('key')
 ...
 ```
 
-# Usage with redux-persist
+## - **Usage**
+
+### **Detailed docs: [conf](https://www.npmjs.com/package/conf)**
+
+- The name of getters in the renderer bindings are replaced with `get[Origname]()` \
+  ex. `bindings.getPath()` instead of `store.path`
+
+- Methods `onDidChange` & `onDidAnyChange` are omitted from renderer bindings as the usage of them is not possible with electron's two-threaded design. You can still use these on the store created in the main thread.
+
+---
+## Usage with redux-persist
 
 ```ts
 import { createStore } from 'redux';
