@@ -59,7 +59,8 @@ contextBridge.exposeInMainWorld('store', {
 ```ts
 window.store.get('key')
 window.store.set('key', 'value')
-window.store.has('key', 'value')
+window.store.delete('key')
+window.store.has('key')
 ...
 ```
 
