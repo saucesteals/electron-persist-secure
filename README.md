@@ -3,7 +3,18 @@
 
 ### - **Works with redux-persist out of the box!**
 
-### -  **Made for our [electron-typescript-react-tailwind-redux](https://github.com/saucesteals/electron-typescript-react-tailwind-redux) boilerplate**
+### -  **Made for the [electron-typescript-react-tailwind-redux](https://github.com/saucesteals/electron-typescript-react-tailwind-redux) boilerplate**
+
+---
+## Installation
+- With `yarn`
+  ```sh
+  yarn add electron-persist-secure
+  ```
+- With `npm`
+  ```sh
+  npm install electron-persist-secure
+  ```
 
 ---
 ## **Guide**
