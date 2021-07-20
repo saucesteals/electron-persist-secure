@@ -29,7 +29,10 @@ export default class Store extends Conf {
       throw new Error(`Listener for store has already been setup`);
     }
 
-    ipcMain.handle(createStoreMessage(this.storeName), this.messageHandler.bind(this));
+    ipcMain.handle(
+      createStoreMessage(this.storeName),
+      this.messageHandler.bind(this)
+    );
 
     this.listening = true;
   }
@@ -44,7 +47,7 @@ export default class Store extends Conf {
     try {
       const f = this[operation] as any;
       if (typeof f === "function") {
-        value = f(...args);
+        value = f.apply(this, args);
       } else {
         value = f;
       }
